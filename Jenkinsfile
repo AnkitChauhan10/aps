@@ -13,7 +13,7 @@ git 'https://github.com/AnkitChauhan10/aps.git'
 stage('Building our image') {
 steps{
 script {
-dockerImage = docker.build registry + ":$BUILD_NUMBER"
+ sh 'docker build -t name:lts .'
 }
 }
 }
