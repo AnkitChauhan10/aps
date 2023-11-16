@@ -12,7 +12,9 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 echo 'Building the Docker image'
-               
+               script {
+                    docker.build("Name:latest", '.')
+                }
             }
         }
     }
