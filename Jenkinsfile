@@ -1,8 +1,5 @@
 pipeline {
-environment {
-registry = "ankitchauhan18aa/aps"
-dockerImage = ''
-}
+
 agent any
 stages {
 stage('Cloning our Git') {
