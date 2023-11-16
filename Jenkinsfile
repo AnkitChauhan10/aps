@@ -1,22 +1,22 @@
 pipeline {
-    agent any
+environment {
+registry = "ankitchauhan18aa/aps"
+dockerImage = ''
+}
+agent any
+stages {
+stage('Cloning our Git') {
+steps {
+git 'https://github.com/YourGithubAccount/YourGithubRepository.git'
+}
+}
+stage('Building our image') {
+steps{
+script {
+dockerImage = docker.build registry + ":$BUILD_NUMBER"
+}
+}
+}
 
-    stages {
-        stage('Checkout') {
-            steps {
-                // Checkout the code from Git
-                git 'https://github.com/AnkitChauhan10/aps.git'
-            }
-        }
-
-        stage('Build Docker Image') {
-            steps {
-                // Build the Docker image
-                script {
-                    def dockerImage = docker.build("yourdocker:latest", '.')
-
-                }
-            }
-        }
-    }
+}
 }
