@@ -16,7 +16,7 @@ pipeline {
             steps {
                 
                
-                sh 'docker pull ankitchauhan18/taskdocker:latest' 
+                sh 'docker pull ankitchauhan18/spingaaa:latest' 
             
             
             }
@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     
-                    sh 'kubectl applly -f deploy.yaml'
+                    sh 'kubectl apply -f deploy.yaml'
                 }
             }
         }
