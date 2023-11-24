@@ -1,17 +1,34 @@
 pipeline {
     agent any
-
     stages {
-        stage('Build Docker Image') {
+        stage('Log In to Docker Hub') {
             steps {
                 script {
-                    // Checkout the code only if it's not already checked out
-                    checkout scm
-
-                    echo 'Building the Docker image'
-                    docker.build("name:latest", '.')
+                    
+                    withCredentials([usernamePassword(credentialsId: '4e41affb-db9b-4dae-b6c7-8182465b8d89', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                        
+                        sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
+                    }
+                }
+            }
+        }
+        stage('Pull Docker Image') {
+            steps {
+                
+               
+                sh 'docker pull ankitchauhan18/taskdocker:latest' 
+            
+            
+            }
+        }
+         stage('Deploy to Kubernetes') {
+            steps {
+                script {
+                    
+                    sh 'kubectl applly -f deploy.yaml'
                 }
             }
         }
     }
 }
+ 
