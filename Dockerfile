@@ -8,7 +8,7 @@ WORKDIR /usr/share/nginx/html
 COPY . .
 
 # Expose the port your app runs on
-EXPOSE 80
+EXPOSE 9110
 
 # Command to run your application
 CMD ["nginx", "-g", "daemon off;"]
