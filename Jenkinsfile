@@ -16,7 +16,7 @@ pipeline {
             steps {
                 
                
-                sh 'docker pull ankitchauhan18/spingaaa:latest' 
+                sh 'docker pull ankitchauhan18/spingaaa:tagname' 
             
             
             }
